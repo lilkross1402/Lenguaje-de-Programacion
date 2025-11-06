@@ -194,6 +194,8 @@ app.get('/admin/logout', (req, res) => {
 // ==============================
 // 🚀 INICIAR SERVIDOR
 // ==============================
-app.listen(PORT, () => {
-  console.log(`✅ Servidor ejecutándose en http://localhost:${PORT}`);
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Servidor ejecutándose en el puerto ${PORT}`);
 });
