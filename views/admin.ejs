@@ -1,0 +1,29 @@
+<%- include('layout', { title: 'Panel administrador', body: '' }) %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h3>Gestión de anuncios</h3>
+  <a href="/admin/ads/new" class="btn btn-primary">+ Nuevo anuncio</a>
+</div>
+
+<table class="table table-striped table-bordered shadow-sm">
+  <thead class="table-dark">
+    <tr>
+      <th>Título</th>
+      <th>CPC ($)</th>
+      <th>Impresiones</th>
+      <th>Clics</th>
+      <th>Costo total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% ads.forEach(a => { %>
+      <tr>
+        <td><%= a.title %></td>
+        <td><%= a.cpc.toFixed(2) %></td>
+        <td><%= a.impressions %></td>
+        <td><%= a.clicks %></td>
+        <td>$<%= (a.cpc * a.clicks).toFixed(2) %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,50 @@
+<%- include('layout', { title: 'Anuncio patrocinado', body: '' }) %>
+
+<!-- Contenedor centrado igual que login -->
+<div class="d-flex justify-content-center align-items-center flex-column" style="min-height: calc(100vh - 80px);">
+
+  <div class="card text-center fade-in"
+       style="max-width: 600px; width: 90%; border-radius: 1rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); padding: 2rem;">
+    
+    <h3 class="fw-bold text-gradient mb-3"><%= ad.title %></h3>
+
+    <% if (ad.image_url) { %>
+      <img src="<%= ad.image_url %>" alt="Anuncio" class="img-fluid rounded mb-3" style="max-height: 300px; object-fit: cover;">
+    <% } %>
+
+    <p class="lead"><%= ad.description || "Gracias por ver este anuncio patrocinado." %></p>
+
+    <div class="progress my-4" style="height: 25px;">
+      <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+           role="progressbar" style="width: 0%;">0%</div>
+    </div>
+
+    <button id="continue-btn" class="btn btn-primary btn-lg" disabled>Procesando anuncio...</button>
+  </div>
+
+  <footer class="footer text-center text-muted mt-3">
+    © 2025 WiFi Plaza Libre
+  </footer>
+</div>
+
+<script>
+  const progressBar = document.getElementById('progress-bar');
+  const continueBtn = document.getElementById('continue-btn');
+  let progress = 0;
+
+  const interval = setInterval(() => {
+    progress += 2;
+    progressBar.style.width = progress + '%';
+    progressBar.textContent = progress + '%';
+    if (progress >= 100) {
+      clearInterval(interval);
+      progressBar.classList.remove('progress-bar-animated');
+      continueBtn.disabled = false;
+      continueBtn.textContent = 'Continuar a la red Wi-Fi';
+    }
+  }, 100);
+
+  continueBtn.addEventListener('click', () => {
+    window.location.href = "/conectado";
+  });
+</script>

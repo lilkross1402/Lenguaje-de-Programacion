@@ -1,0 +1,42 @@
+<%- include('layout', { title: 'Acceso a la red Wi-Fi', body: '' }) %>
+
+<main class="container">
+  <div class="card login-card shadow-lg fade-in">
+    <h3 class="text-center text-gradient fw-bold mb-3">
+      Bienvenido a WiFi Plaza Libre
+    </h3>
+    <p class="text-center text-muted mb-4">
+      Conéctate gratis al Internet del centro comercial.<br>
+      Registra tus datos.
+    </p>
+
+    <% if (error) { %>
+      <div class="alert alert-danger text-center"><%= error %></div>
+    <% } %>
+
+    <form action="/login" method="POST">
+      <div class="mb-3 text-start">
+        <label class="form-label fw-semibold">Nombre completo</label>
+        <input type="text" name="name" class="form-control" placeholder="Ej: Carlos Pérez" required>
+      </div>
+
+      <div class="mb-3 text-start">
+        <label class="form-label fw-semibold">Correo electrónico</label>
+        <input type="email" name="email" class="form-control" placeholder="ejemplo@gmail.com" required>
+      </div>
+
+      <div class="form-check mb-3 text-start">
+        <input class="form-check-input" type="checkbox" required>
+        <label class="form-check-label">
+          Acepto las políticas de uso y visualización de anuncios.
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Conectar</button>
+    </form>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>© 2025 WiFi Plaza Libre</p>
+</footer>
