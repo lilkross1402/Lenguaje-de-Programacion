@@ -197,6 +197,3 @@ app.get('/admin/logout', (req, res) => {
 app.listen(PORT, () => {
   console.log(`✅ Servidor ejecutándose en http://localhost:${PORT}`);
 });
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
