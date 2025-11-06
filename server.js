@@ -4,7 +4,6 @@ const path = require('path');
 const db = require('./db');
 
 const app = express();
-const PORT = 5000;
 
 // ==============================
 // 🔧 CONFIGURACIÓN BÁSICA
@@ -80,7 +79,6 @@ app.post('/login', (req, res) => {
     return res.render('login', { title: 'Inicio de sesión', error: 'Debe ingresar todos los campos.' });
   }
 
-  // Guardar usuario en base de datos o sesión
   db.get('SELECT * FROM users WHERE email = ?', [email], (err, user) => {
     if (!user) {
       db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email], function (err) {
